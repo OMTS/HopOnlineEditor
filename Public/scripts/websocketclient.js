@@ -3,7 +3,9 @@ var scriptArea = document.getElementById('script');
 var resultArea = document.getElementById('results-area');
 
 function connectToServer() {
-    websocket = new WebSocket("ws://localhost:8080/listen-evaluation");
+    var getUrl = window.location;
+    var baseUrl = getUrl.host + "/" + getUrl.pathname.split('/')[1]
+    websocket = new WebSocket("ws://"+baseUrl+"/listen-evaluation");
 
     websocket.onclose = function (event) {
         alert("closed .......");
