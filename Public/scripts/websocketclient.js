@@ -5,7 +5,11 @@ var resultArea = document.getElementById('results-area');
 function connectToServer() {
     var getUrl = window.location;
     var baseUrl = getUrl.host + "/" + getUrl.pathname.split('/')[1]
-    websocket = new WebSocket("ws://"+baseUrl+"/listen-evaluation");
+    if (baseUrl.startsWith("localhost")) {
+        websocket = new WebSocket("ws://"+baseUrl+"/listen-evaluation");
+    } else {
+        websocket = new WebSocket("wss://"+baseUrl+"/listen-evaluation");
+    }
 
     websocket.onclose = function (event) {
         alert("closed .......");
