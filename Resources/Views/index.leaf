@@ -1,16 +1,18 @@
 #set("editor") {
- <form method="post">
+ <!-- <form method="post"> -->
+
      <div class="form-group">
          <label for="script">Code here:</label>
          <textarea type="text" name="script" class="form-control" id="script" rows="20">#if(isResult){#(script)}</textarea>
      </div>
-     <button type="submit" class="btn btn-outline-success">Run</button>
- </form>
+
+     <button class="btn btn-outline-success" onclick="sendScriptToServer()">Run</button>
+ <!--</form> -->
  }
 
 #set("result") {
 <label for="script">Execution Result:</label>
-<div class="alert alert-success" role="alert">
+<div class="alert alert-success" role="alert" id="results-area">
     #if(isResult){#(executionResult)}
 </div>
 }
