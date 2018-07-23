@@ -1,6 +1,7 @@
 import Vapor
 import WebSocket
 import Foundation
+
 extension WebSocket {
     func send(cookie: [String: String]) {
         let encoder = JSONEncoder()
@@ -10,5 +11,11 @@ extension WebSocket {
         //let decoder = JSONDecoder()
         //print(try! decoder.decode([String:String].self, from: data))
         send(data)
+    }
+}
+
+extension WebSocket: OuputDesriptor {
+    func print(message: String) {
+        send(message)
     }
 }
