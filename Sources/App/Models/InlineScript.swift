@@ -1,5 +1,5 @@
 //
-//  InlineScript.swift
+//  OnlineScript.swift
 //  App
 //
 //  Created by Iman Zarrabian on 20/07/2018.
@@ -8,7 +8,7 @@
 import Foundation
 import Vapor
 
-final class InlineScript: Codable {
+final class OnlineScript: Codable {
     var script: String
 
     init(script: String) {
@@ -16,4 +16,4 @@ final class InlineScript: Codable {
     }
 }
 
-extension InlineScript: Content {}
+extension OnlineScript: Content {}

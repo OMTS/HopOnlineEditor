@@ -16,7 +16,7 @@ final class EditorController: RouteCollection {
     let idCount = 0
     func boot(router: Router) throws {
         router.get(use: indexHandler)
-        router.post(InlineScript.self, use: createScriptHandler)
+        router.post(OnlineScript.self, use: createScriptHandler)
         /*router.web("/listen") { ws
             //generate ID
             //Write ID TO THE WS
@@ -43,11 +43,11 @@ final class EditorController: RouteCollection {
         return try req.view().render("index", context)
     }
 
-    private func createScriptHandler(_ req: Request, data: InlineScript) throws -> Future<HTTPStatus> {
+    private func createScriptHandler(_ req: Request, data: OnlineScript) throws -> Future<HTTPStatus> {
 
         let filteredScript = data.script.replacingOccurrences(of: "\r\n", with: "\n")
         //maybe we should treat \r\n in the lexer
-        let script = InlineScript(script: filteredScript)
+        let script = OnlineScript(script: filteredScript)
 
         //let newOutput = StdOutput()
         //let promiseEvaluation = req.eventLoop.newPromise(EvaluationContext.self)
