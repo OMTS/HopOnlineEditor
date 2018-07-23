@@ -3,7 +3,7 @@
 
 <div class="form-group">
     <label for="script" class="text-light">Code here:</label>
-    <textarea type="text" name="script" class="form-control text-light bg-dark border-white" id="script" rows="20">#if(isResult){#(script)}</textarea>
+    <textarea spellcheck="false" type="text" name="script" class="form-control text-light bg-dark border-white" id="script" rows="20">#if(isResult){#(script)}</textarea>
 </div>
 <div class="btn-group">
     <button type="button" class="btn btn-outline-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
