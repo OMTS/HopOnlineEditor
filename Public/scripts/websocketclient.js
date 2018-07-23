@@ -1,8 +1,9 @@
 var websocket;
+var scriptArea = document.getElementById('script');
+var resultArea = document.getElementById('results-area');
 
 function connectToServer() {
     websocket = new WebSocket("ws://localhost:8080/listen-evaluation");
-    var div = document.getElementById('results-area');
 
     websocket.onclose = function (event) {
         alert("closed .......");
@@ -11,21 +12,20 @@ function connectToServer() {
         var data = JSON.parse(event.data);
 
         if(data.hasOwnProperty('cookie')){
-            div.innerHTML += "Started " + data.cookie + "<br/>";
+            resultArea.innerHTML += "Started " + data.cookie + "<br/>";
             document.cookie = data.cookie;
-
+            scriptArea.focus();
         } else {
             if(data.hasOwnProperty('result')){
-                div.innerHTML += data.result + "<br/>";
+                resultArea.innerHTML += data.result + "<br/>";
+                scriptArea.focus();
+
             }
         }
     };
-    return websocket
 }
 
 function sendScriptToServer() {
-    var div = document.getElementById('results-area');
-    div.innerHTML = "";
-    var scriptArea = document.getElementById('script');
+    resultArea.innerHTML = "";
     websocket.send(scriptArea.value);
 }

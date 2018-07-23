@@ -1,5 +1,7 @@
 //source: https://jsfiddle.net/2wAzx/13/
 
+var scriptArea = document.getElementById('script');
+
 function enableTab(id) {
     var el = document.getElementById(id);
     el.onkeydown = function(e) {
@@ -23,6 +25,18 @@ function enableTab(id) {
     };
 }
 
+function importSys() {
+    scriptArea.value = "import Sys\n" + scriptArea.value
+    scriptArea.focus();
+
+}
+
+function importMath() {
+    scriptArea.value = "import Math\n" + scriptArea.value
+    scriptArea.focus();
+}
+
 // Enable the tab character onkeypress (onkeydown) inside textarea...
 // ... for a textarea that has an `id="my-textarea"`
 enableTab('script');
+scriptArea.focus();
