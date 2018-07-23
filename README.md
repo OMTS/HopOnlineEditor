@@ -1,6 +1,6 @@
 ## Hop Online Editor
 ![Online Editor](HopInlineEditor.png
- "Inline Editor")
+ "Online Editor")
 
 
 ## Online Editor Roadmap
