@@ -1,5 +1,6 @@
 ## Hop Online Editor
-![Alt text](HopInlineEditor "Inline Editor")
+![Online Editor](HopInlineEditor.png
+ "Inline Editor")
 
 
 ## Online Editor Roadmap
