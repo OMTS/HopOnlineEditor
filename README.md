@@ -5,8 +5,9 @@
 
 ## Online Editor Roadmap
 * Write tests
-* Create a server only repo for deployment
-* Deploy to Heroku (env staging/prod)
+* Syntaxe higlighting
+* Create a server only repo for deployment ✅
+* Deploy to Heroku (staging) ✅
 * Handle Errors
 * Handle All evaluation results (websockets?)
 * Create a framework for the Language dependency
