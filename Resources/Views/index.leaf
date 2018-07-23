@@ -1,18 +1,27 @@
 #set("editor") {
  <!-- <form method="post"> -->
 
-     <div class="form-group">
-         <label for="script">Code here:</label>
-         <textarea type="text" name="script" class="form-control" id="script" rows="20">#if(isResult){#(script)}</textarea>
-     </div>
+<div class="form-group">
+    <label for="script" class="text-light">Code here:</label>
+    <textarea type="text" name="script" class="form-control text-light bg-dark border-white" id="script" rows="20">#if(isResult){#(script)}</textarea>
+</div>
+<div class="btn-group">
+    <button type="button" class="btn btn-outline-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Native Modules
+    </button>
+    <div class="dropdown-menu">
+        <a class="dropdown-item" href="#" onclick="importSys()">Sys</a>
+        <a class="dropdown-item" href="#" onclick="importMath()">Math</a>
+    </div>
+</div>
 
-     <button class="btn btn-outline-success" onclick="sendScriptToServer()">Run</button>
- <!--</form> -->
- }
+<button class="btn btn-success" onclick="sendScriptToServer()">Run 🚀</button>
+
+}
 
 #set("result") {
-<label for="script">Execution Result:</label>
-<div class="alert alert-success" role="alert" id="results-area">
+<label for="script" class="text-light">Execution Result:</label>
+<div class="alert bg-info text-white alert-success shadow p-3 mb-5 rounded" role="alert" id="results-area">
     #if(isResult){#(executionResult)}
 </div>
 }
