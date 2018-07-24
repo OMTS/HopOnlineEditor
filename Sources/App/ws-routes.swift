@@ -21,7 +21,10 @@ public func sockets(_ websockets: NIOWebSocketServer) {
 
         ws.onText {ws, text in
             print("ws received: \(text)")
-            try? treatScript(script: text, on: stdout)
+            if let json = try? JSONDecoder().decode([String: String].self, from: text),
+                let script = json["script"]  {
+                try? treatScript(script: script, on: stdout)
+            }
         }
 
         ws.onCloseCode({ (errorCode) in
