@@ -2,12 +2,15 @@
  <!-- <form method="post"> -->
 
 <div class="container">
-    <div class="form-group">
-            <label for="script" class="text-light">Code</label>
-            <textarea spellcheck="false" type="text" name="script" class="form-control text-light bg-dark border-white" id="script" rows="20">#if(isResult){#(script)}</textarea>
+    <div class="form-group" >
+            <!--<label for="script" class="text-light">Code</label>-->
+            <textarea placeholder="Code here..." spellcheck="false" type="text" name="script" class="form-control text-light bg-dark border-white h-100" id="script" rows="20">#if(isResult){#(script)}</textarea>
     </div>
         <div class="row">
-            <div class="col">
+            <div class="col col-md-auto">
+                <button class="btn btn-outline-light" data-toggle="modal" data-target=".help-modal-lg" onclick="loadHelp()">Help</button>
+            </div>
+            <div class="col col-md-auto">
                 <div class="btn-group">
                     <button type="button" class="btn btn-outline-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Native Modules
@@ -18,6 +21,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="col text-right">
                 <button class="btn btn-warning" onclick="sendScriptToServer()">Run 🚀</button>
             </div>
@@ -26,9 +30,33 @@
 }
 
 #set("result") {
-<label for="script" class="text-light">Console</label>
+<!--<label for="script" class="text-light">Console</label>-->
 <div class="alert border-warning bg-light text-dark alert-success shadow p-3 mb-5 rounded" role="alert" id="results-area">
     #if(isResult){#(executionResult)}
 </div>
 }
+
+<!-- Modal -->
+<div class="modal fade help-modal-lg" tabindex="-1" role="dialog" aria-labelledby="help-modal-lg" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLongTitle">Language Help</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="help-area">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">Done</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 #embed("base")
