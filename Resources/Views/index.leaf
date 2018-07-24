@@ -4,7 +4,7 @@
 <div class="container">
     <div class="form-group" >
             <!--<label for="script" class="text-light">Code</label>-->
-            <textarea placeholder="Code here..." spellcheck="false" type="text" name="script" class="form-control text-light bg-dark border-white h-100" id="script" rows="20">#if(isResult){#(script)}</textarea>
+            <textarea placeholder="Code here..." spellcheck="false" type="text" name="script" class="form-control text-light bg-dark border-white" id="script" rows="20">#if(isResult){#(script)}</textarea>
     </div>
         <div class="row">
             <div class="col col-md-auto">
