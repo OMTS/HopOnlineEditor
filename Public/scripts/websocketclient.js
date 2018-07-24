@@ -12,7 +12,7 @@ function connectToServer() {
     }
 
     websocket.onclose = function (event) {
-        alert("closed .......");
+        toggleCloseAlert();
     };
     websocket.onmessage=function(event) {
         var data = JSON.parse(event.data);
@@ -25,7 +25,6 @@ function connectToServer() {
             if(data.hasOwnProperty('result')){
                 resultArea.innerHTML += data.result + "<br/>";
                 scriptArea.focus();
-
             }
         }
     };
@@ -34,4 +33,14 @@ function connectToServer() {
 function sendScriptToServer() {
     resultArea.innerHTML = "";
     websocket.send(scriptArea.value);
+}
+
+function toggleCloseAlert() {
+  /*  var x = document.getElementById("ws-closed");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }*/
+    $('#ws-closed').show();
 }
