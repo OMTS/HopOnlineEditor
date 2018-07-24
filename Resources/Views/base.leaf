@@ -8,12 +8,10 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
         <title>#(title)</title>
-        <script ></script>
-
     </head>
     <body onload="connectToServer()" class="bg-secondary">
         <nav class="navbar navbar-expand-md navbar-dark bg-warning">
-            <a class="navbar-brand text-dark" href="/">Inline Hop</a>
+            <a class="navbar-brand text-dark" href="/"><h4>Hop</h4></a>
             <button class="navbar-toggler" type="button"
                 data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -39,11 +37,12 @@
                     #get(result)
                 </div>
             </div>
-            <div class="row">
-                <div class="mt-4">
-                    <div class="alert alert-danger shadow p-3 mb-5 bg-white rounded" role="alert" div class="fixed-bottom">
-                        Prints every single output on every single alive websocket. We have to fix this by using something other than NSNotification for printing, in the stdlib (HINT: a swift closure?)
-                    </div>
+            <div class="row ">
+                <div class="alert alert-warning alert-dismissible p-3 mb-5 ml-4 mr-4 rounded fade show fixed-bottom" role="alert">
+                    Prints every single output on every single alive websocket. We have to fix this by using something other than NSNotification for printing, in the stdlib <strong>(HINT: a swift closure?)</strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                 </div>
             </div>
         </div>

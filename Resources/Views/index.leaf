@@ -27,7 +27,7 @@
 
 #set("result") {
 <label for="script" class="text-light">Console</label>
-<div class="alert bg-info text-white alert-success shadow p-3 mb-5 rounded" role="alert" id="results-area">
+<div class="alert border-warning bg-light text-dark alert-success shadow p-3 mb-5 rounded" role="alert" id="results-area">
     #if(isResult){#(executionResult)}
 </div>
 }
