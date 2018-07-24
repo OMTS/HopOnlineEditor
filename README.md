@@ -4,14 +4,16 @@
 
 
 ## Online Editor Roadmap
-* Write tests
-* Syntaxe higlighting (see CodeMirror)
+* Write some tests ✅
+* Configure CI/CD (staging => ✅)
 * Add Language Help ✅
 * Implement a way to keep the websocket alive ✅
 * Create a server only repo for deployment ✅
 * Deploy to Heroku (staging) ✅
 * Improve Styling ✅
-* Handle Errors
-* Implement a stdout print mechanism to avoid NSNotification in Hop
 * Handle All evaluation results (websockets?) ✅
+* Handle Errors
+* Syntaxe higlighting (see CodeMirror)
+* Write websocket tests
+* Implement a stdout print mechanism to avoid NSNotification in Hop
 * Create a framework for the Language dependency
