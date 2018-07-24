@@ -12,8 +12,8 @@
 
     </head>
     <body onload="connectToServer()" class="bg-secondary">
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-            <a class="navbar-brand" href="/">Inline Hop</a>
+        <nav class="navbar navbar-expand-md navbar-dark bg-warning">
+            <a class="navbar-brand text-dark" href="/">Inline Hop</a>
             <button class="navbar-toggler" type="button"
                 data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -24,13 +24,13 @@
                 id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item #if(title == "Homepage"){active}">
-                        <a href="/" class="nav-link">Reset</a>
+                        <a href="/" class="nav-link text-dark">Reset</a>
                     </li>
                 </ul>
             </div>
         </nav>
 
-        <div class="container">
+        <div class="container mt-3">
             <div class="row">
                 <div class="col">
                     #get(editor)
