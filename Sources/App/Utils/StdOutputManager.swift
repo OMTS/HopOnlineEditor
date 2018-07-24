@@ -25,8 +25,4 @@ final class StdOutputManager { //should be replaced by a reddis for example
         }
         sessions[session] = nil
     }
-
-    func writeToStdout(session: String, message: String) {
-
-    }
 }

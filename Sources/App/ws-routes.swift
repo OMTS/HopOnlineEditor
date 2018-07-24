@@ -3,34 +3,27 @@ import Vapor
 let sessionManager = StdOutputManager()
 
 public func sockets(_ websockets: NIOWebSocketServer) {
-    websockets.get("echo-test") { ws, req in
-        print("ws connnected")
-        ws.onText { ws, text in
-            print("ws received: \(text)")
-            ws.send("echo - \(text)")
-        }
-    }
-
     websockets.get("listen-evaluation") { ws, req in
         let uuid = UUID().uuidString
-        ws.send("{\"cookie\": \"session=\(uuid)\"}")
+        let session = SessionCookie(cookie: uuid)
+        if let jsonString = session.jsonString {
+            ws.send(jsonString)
+        }
 
         let stdout = Stdout(descriptor: ws)
         sessionManager.add(output:stdout, to: uuid)
         stdout.registerForOutput()
 
         ws.onText {ws, text in
-            print("ws received: \(text)")
-            if let json = try? JSONDecoder().decode([String: String].self, from: text),
-                let script = json["script"]  {
-                try? treatScript(script: script, on: stdout)
+            if let oScript = try? JSONDecoder().decode(OnlineScript.self, from: text){
+                try? treatScript(script: oScript.script, on: stdout)
             }
         }
 
         ws.onCloseCode({ (errorCode) in
             stdout.unregisterForOutput()
             sessionManager.remove(output: stdout, from: uuid)
-            print(errorCode)
+            print("websocket closed because: \(errorCode)")
         })
     }
 }

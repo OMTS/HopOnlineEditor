@@ -9,13 +9,14 @@ import Foundation
 
 final class Stdout {
     let descriptor: OuputDesriptor
+    var printObserver: Any?
 
     init(descriptor: OuputDesriptor) {
         self.descriptor = descriptor
     }
 
     func registerForOutput() {
-        NotificationCenter.default.addObserver(forName: printNotification, object: nil,
+        printObserver = NotificationCenter.default.addObserver(forName: printNotification, object: nil,
                                                queue: nil) {[weak self] notification in
 
                                                 if let message = notification.userInfo?[notificationMessageInfosKey] as? String {
@@ -26,6 +27,8 @@ final class Stdout {
     }
 
     func unregisterForOutput() {
-        NotificationCenter.default.removeObserver(self)
+        if let printObserver = printObserver {
+            NotificationCenter.default.removeObserver(printObserver, name: printNotification, object: nil)
+        }
     }
 }
