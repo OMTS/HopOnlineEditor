@@ -34,11 +34,11 @@ final class StdOutTests: XCTestCase {
                                         object: nil,
                                         userInfo: [notificationMessageInfosKey : "YOLO"])
 
-        let expectation = XCTestExpectation(description: "Register From NotificationCenter")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            expectation.fulfill()
-        }
-        wait(for: [expectation], timeout: 2.0)
+//        let expectation = XCTestExpectation(description: "Register From NotificationCenter")
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+//            expectation.fulfill()
+//        }
+//        wait(for: [expectation], timeout: 2.0)
 
         let expectedResult = "{\"result\":\"YOLO\"}".replacingOccurrences(of: " ", with: "")
         XCTAssertNotNil(descriptor.printResult)
@@ -54,11 +54,11 @@ final class StdOutTests: XCTestCase {
                                         object: nil,
                                         userInfo: [notificationMessageInfosKey : "YOLO2"])
 
-        let expectation = XCTestExpectation(description: "Unregister From NotificationCenter")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            expectation.fulfill()
-        }
-        wait(for: [expectation], timeout: 2.0)
+//        let expectation = XCTestExpectation(description: "Unregister From NotificationCenter")
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+//            expectation.fulfill()
+//        }
+//        wait(for: [expectation], timeout: 2.0)
 
 
         let expectedResult = "{\"result\":\"YOLO2\"}".replacingOccurrences(of: " ", with: "")
@@ -70,11 +70,11 @@ final class StdOutTests: XCTestCase {
                                         object: nil,
                                         userInfo: [notificationMessageInfosKey : "YOLO3"])
 
-        let expectation2 = XCTestExpectation(description: "Unregister2 From NotificationCenter")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            expectation2.fulfill()
-        }
-        wait(for: [expectation2], timeout: 2.0)
+//        let expectation2 = fXCTestExpectation(description: "Unregister2 From NotificationCenter")
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+//            expectation2.fulfill()
+//        }
+//        wait(for: [expectation2], timeout: 2.0)
 
         XCTAssertEqual(descriptor.printResult!.replacingOccurrences(of: " ", with: ""), expectedResult)
 
