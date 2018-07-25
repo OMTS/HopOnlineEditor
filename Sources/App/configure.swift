@@ -21,6 +21,5 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     sockets(websockets)
     services.register(websockets, as: WebSocketServer.self)
 
-
     config.prefer(LeafRenderer.self, for: ViewRenderer.self)
 }

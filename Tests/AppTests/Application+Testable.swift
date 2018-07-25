@@ -53,6 +53,24 @@ extension Application {
     func sendRequest<T>(to path: String, method: HTTPMethod, headers: HTTPHeaders, data: T) throws where T: Content {
         _ = try self.sendRequest(to: path, method: method, headers: headers, body: data)
     }
+
+   /* func sendWSRequest(to path: String, message: String) throws -> Void  {
+       /* let responder = try self.make(Responder.self)
+        let request = HTTPRequest(method: method, url: URL(string: path)!, headers: headers)
+        let wrappedRequest = Request(http: request, using: self)
+        if let body = body {
+            try wrappedRequest.content.encode(body)
+        }
+        return try responder.respond(to: wrappedRequest).wait()*/
+        let ws = HTTPClient.webSocket(scheme: .wss, hostname: "localhost", port: 8080, path: path, on: self.eventLoop)
+
+        return try ws.flatMap { websocket in
+            websocket.send(message)
+            return websocket.onClose
+            }.catch{ (error) in
+                print(error)
+            }.wait()
+    }*/
 }
 
 

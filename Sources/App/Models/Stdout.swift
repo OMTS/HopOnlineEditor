@@ -20,8 +20,11 @@ final class Stdout {
                                                queue: nil) {[weak self] notification in
 
                                                 if let message = notification.userInfo?[notificationMessageInfosKey] as? String {
-                                                    let json = "{\"result\": \"\(message)\"}"
-                                                    self?.descriptor.print(message: json)
+
+                                                    let result = EvaluationResult(result: message)
+                                                    if let jsonString = result.jsonString {
+                                                        self?.descriptor.print(message: jsonString)
+                                                    }
                                                 }
         }
     }

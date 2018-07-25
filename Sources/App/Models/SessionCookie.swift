@@ -8,14 +8,8 @@
 import Foundation
 import Vapor
 
-final class SessionCookie: Codable {
+final class SessionCookie: Codable, JsonStringRepresantable {
     var cookie: String
-
-    var jsonString: String? {
-        if let data = try? JSONEncoder().encode(self) {
-            return String(data: data, encoding: .utf8)
-        } else { return nil }
-    }
 
     init(cookie: String) {
         self.cookie = "session="+cookie
