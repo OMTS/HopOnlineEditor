@@ -1,4 +1,5 @@
 import Vapor
+import Hop
 
 let sessionManager = StdOutputManager()
 
@@ -31,16 +32,7 @@ public func sockets(_ websockets: NIOWebSocketServer) {
 private func treatScript(script: String, on stdout: Stdout) throws {
     let filteredScript = script.replacingOccurrences(of: "\r\n", with: "\n")
     //maybe we should treat \r\n in the lexer
-    let script = OnlineScript(script: filteredScript)
+    let script = OnlineScript(script: filteredScript + "\n")
 
-    let lexer = Lexer(script: script.script + "\n")
-    let parser = Parser(with: lexer)
-    if let program = try parser.parseProgram() {
-        /* program.setSTDoutHandler { string in
-         WRITE TO THE Websocket
-         }*/
-        print("------------- parsing OK -----------\n")
-        try program.perform()
-        print("------------- perform OK -----------\n")
-    }
+    try Interpreter.runScript(script.script)
 }

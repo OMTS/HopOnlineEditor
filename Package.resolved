@@ -38,6 +38,15 @@
         }
       },
       {
+        "package": "Hop",
+        "repositoryURL": "git@github.com:OMTS/Hop.git",
+        "state": {
+          "branch": null,
+          "revision": "91af10d300d0a03e1128a0f0ba70d30e8526f644",
+          "version": "0.1.2"
+        }
+      },
+      {
         "package": "HTTP",
         "repositoryURL": "https://github.com/vapor/http.git",
         "state": {

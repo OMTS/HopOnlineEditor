@@ -8,6 +8,7 @@
 @testable import App
 import Vapor
 import XCTest
+import Hop
 
 final class StdOutTests: XCTestCase {
 

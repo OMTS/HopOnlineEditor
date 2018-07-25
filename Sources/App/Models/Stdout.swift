@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Hop
 
 final class Stdout {
     let descriptor: OuputDesriptor
