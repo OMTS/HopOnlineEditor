@@ -11,6 +11,9 @@
                 <button class="btn btn-outline-light" data-toggle="modal" data-target=".help-modal-lg" onclick="loadHelp()">Help</button>
             </div>
             <div class="col col-md-auto">
+                <button class="btn btn-outline-light" onclick="copyToClipboard()">Copy to Clipboard</button>
+            </div>
+            <div class="col col-md-auto">
                 <div class="btn-group">
                     <button type="button" class="btn btn-outline-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Native Modules

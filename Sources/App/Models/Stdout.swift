@@ -8,31 +8,36 @@
 import Foundation
 import Hop
 
+enum StdoutError: Error {
+    case alreadyRegisteredError
+}
+
 final class Stdout {
     let descriptor: OuputDesriptor
-    var printObserver: Any?
+    let sessionId: String
+    var messenger: MessengerType!
 
-    init(descriptor: OuputDesriptor) {
+    init(descriptor: OuputDesriptor, sessionId: String, messenger: MessengerType? = nil) {
         self.descriptor = descriptor
+        self.sessionId = sessionId
+        self.messenger = messenger ?? Messenger(sessionId: sessionId)
     }
 
     func registerForOutput() {
-        printObserver = NotificationCenter.default.addObserver(forName: printNotification, object: nil,
-                                               queue: nil) {[weak self] notification in
-
-                                                if let message = notification.userInfo?[notificationMessageInfosKey] as? String {
-
-                                                    let result = EvaluationResult(result: message)
-                                                    if let jsonString = result.jsonString {
-                                                        self?.descriptor.print(message: jsonString)
-                                                    }
-                                                }
+        // Configure stdout callback
+        messenger!.subscribe(to: .stdout) { [weak self] (_, message) in
+            if let message = message.data as? String {
+                let result = EvaluationResult(result: message)
+                if let jsonString = result.jsonString {
+                    self?.descriptor.print(message: jsonString)
+                }
+            }
         }
     }
 
     func unregisterForOutput() {
-        if let printObserver = printObserver {
-            NotificationCenter.default.removeObserver(printObserver, name: printNotification, object: nil)
-        }
+        //implement unsubscribe in Messenger instance in Hop
     }
 }
+
+extension Messenger: MessengerType {}
