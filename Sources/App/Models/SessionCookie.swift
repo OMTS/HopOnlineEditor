@@ -10,7 +10,7 @@ import Vapor
 
 final class SessionCookie: Codable, JsonStringRepresantable {
     var cookie: String
-
+    
     init(cookie: String) {
         self.cookie = "session="+cookie
     }

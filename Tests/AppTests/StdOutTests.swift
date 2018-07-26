@@ -14,32 +14,31 @@ final class StdOutTests: XCTestCase {
 
     func testStdOutCreation() throws {
         let descriptor = MockWebsocket()
-        let stdout = Stdout(descriptor: descriptor)
+        let sessionString = "DummySession"
+        let stdout = Stdout(descriptor: descriptor, sessionId: sessionString)
         XCTAssertEqual((stdout.descriptor as! MockWebsocket)
             .mockName, "Mocked!")
     }
 
-    func testStdOutHasObserver() throws {
+    func testStdOutHasAMessenger() throws {
         let descriptor = MockWebsocket()
-        let stdout = Stdout(descriptor: descriptor)
+        let messenger = MessengerMocks()
+        let sessionString = "DummySession"
+        let stdout = Stdout(descriptor: descriptor, sessionId: sessionString, messenger: messenger)
+
         stdout.registerForOutput()
 
-        XCTAssertNotNil(stdout.printObserver)
+        XCTAssertNotNil(stdout.messenger)
     }
 
     func testStdOutRegistering() throws {
         let descriptor = MockWebsocket()
-        let stdout = Stdout(descriptor: descriptor)
-        stdout.registerForOutput()
-        NotificationCenter.default.post(name: printNotification,
-                                        object: nil,
-                                        userInfo: [notificationMessageInfosKey : "YOLO"])
+        let messenger = MessengerMocks()
+        let sessionString = "DummySession"
+        let stdout = Stdout(descriptor: descriptor, sessionId: sessionString, messenger: messenger)
 
-//        let expectation = XCTestExpectation(description: "Register From NotificationCenter")
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-//            expectation.fulfill()
-//        }
-//        wait(for: [expectation], timeout: 2.0)
+        stdout.registerForOutput()
+        messenger.executeHandler(result: "YOLO")
 
         let expectedResult = "{\"result\":\"YOLO\"}".replacingOccurrences(of: " ", with: "")
         XCTAssertNotNil(descriptor.printResult)
@@ -47,42 +46,10 @@ final class StdOutTests: XCTestCase {
     }
 
     func testStdOutUnRegistering() throws {
-        let descriptor = MockWebsocket()
-        let stdout = Stdout(descriptor: descriptor)
-
-        stdout.registerForOutput()
-        NotificationCenter.default.post(name: printNotification,
-                                        object: nil,
-                                        userInfo: [notificationMessageInfosKey : "YOLO2"])
-
-//        let expectation = XCTestExpectation(description: "Unregister From NotificationCenter")
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-//            expectation.fulfill()
-//        }
-//        wait(for: [expectation], timeout: 2.0)
-
-
-        let expectedResult = "{\"result\":\"YOLO2\"}".replacingOccurrences(of: " ", with: "")
-        XCTAssertNotNil(descriptor.printResult)
-        XCTAssertEqual(descriptor.printResult!.replacingOccurrences(of: " ", with: ""), expectedResult)
-
-        stdout.unregisterForOutput()
-        NotificationCenter.default.post(name: printNotification,
-                                        object: nil,
-                                        userInfo: [notificationMessageInfosKey : "YOLO3"])
-
-//        let expectation2 = fXCTestExpectation(description: "Unregister2 From NotificationCenter")
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-//            expectation2.fulfill()
-//        }
-//        wait(for: [expectation2], timeout: 2.0)
-
-        XCTAssertEqual(descriptor.printResult!.replacingOccurrences(of: " ", with: ""), expectedResult)
-
     }
 
     static let allTests = [("testStdOutCreation", testStdOutCreation),
-                           ("testStdOutHasObserver", testStdOutHasObserver),
+                           ("testStdOutHasAMessenger", testStdOutHasAMessenger),
                            ("testStdOutRegistering", testStdOutRegistering),
                            ("testStdOutUnRegistering", testStdOutUnRegistering)]
 }

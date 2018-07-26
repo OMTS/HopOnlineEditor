@@ -40,3 +40,11 @@ function importMath() {
 // ... for a textarea that has an `id="my-textarea"`
 enableTab('script');
 scriptArea.focus();
+
+
+function copyToClipboard() {
+    scriptArea.select();
+    const selection = window.getSelection();
+    document.execCommand("copy");
+    selection.removeAllRanges();
+}

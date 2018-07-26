@@ -33,17 +33,17 @@
         "repositoryURL": "https://github.com/vapor/database-kit.git",
         "state": {
           "branch": null,
-          "revision": "acdd4d3384ec0122dcfcca8d23d9054a2860ffba",
-          "version": "1.2.0"
+          "revision": "7a01659316b9f033fa2150d5cd5e9d3c3e46c2e3",
+          "version": "1.3.0"
         }
       },
       {
         "package": "Hop",
-        "repositoryURL": "git@github.com:OMTS/Hop.git",
+        "repositoryURL": "https://github.com/OMTS/Hop.git",
         "state": {
-          "branch": null,
-          "revision": "91af10d300d0a03e1128a0f0ba70d30e8526f644",
-          "version": "0.1.2"
+          "branch": "develop",
+          "revision": "ec340dd646eda61e0a48dbf434cfc29a5b39c515",
+          "version": null
         }
       },
       {
@@ -159,8 +159,8 @@
         "repositoryURL": "https://github.com/vapor/vapor.git",
         "state": {
           "branch": null,
-          "revision": "6b07105a3899fbbae194ee3eb82f54debe502221",
-          "version": "3.0.6"
+          "revision": "e8bc824a45c6c6ab15664ff41d79a1371ddc5cd3",
+          "version": "3.0.7"
         }
       },
       {
