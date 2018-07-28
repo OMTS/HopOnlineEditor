@@ -1,7 +1,8 @@
 ## Hop Online Editor
+**Can be visited here: https://hop-online-editor-staging.herokuapp.com**
+
 ![Online Editor](HopInlineEditor.png
  "Online Editor")
-
 
 ## Online Editor Roadmap
 * Write some tests ✅
