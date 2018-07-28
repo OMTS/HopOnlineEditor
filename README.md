@@ -13,8 +13,10 @@
 * Deploy to Heroku (staging) ✅
 * Improve Styling ✅
 * Handle All evaluation results (websockets?) ✅
-* Handle Errors
 * Syntaxe higlighting (see CodeMirror)
+* Handle Errors
+* Get Language version dynamically
 * Write websocket tests
-* Implement a stdout print mechanism to avoid NSNotification in Hop
-* Create a framework for the Language dependency
+* Help is currently a static file. Plug it to the actual help from Hop repo
+* Implement a stdout print mechanism to avoid NSNotification in Hop ✅
+* Create a framework for the Language dependency ✅
