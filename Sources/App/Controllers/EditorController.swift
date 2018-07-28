@@ -7,11 +7,12 @@
 
 import Vapor
 import Leaf
+import Hop
 
 final class EditorController: RouteCollection {
     func boot(router: Router) throws {
         router.get(use: indexHandler)
-        router.get("version", use: versionHandler)
+        router.get("api/version", use: versionHandler)
     }
 
     private func indexHandler(_ req: Request) throws -> Future<View> {
@@ -19,7 +20,8 @@ final class EditorController: RouteCollection {
         return try req.view().render("index", context)
     }
 
-    private func versionHandler(_ req: Request) throws -> String {
-        return "Hop v0.0.1"
+    private func versionHandler(_ req: Request) throws -> LanguageVersion {
+        //Need a way to get the language version from Hop Dependency
+        return LanguageVersion(version: "0.0.1")
     }
 }

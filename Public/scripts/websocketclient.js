@@ -1,6 +1,7 @@
 var websocket;
 var scriptArea = document.getElementById('script');
 var resultArea = document.getElementById('results-area');
+var timerID = 0;
 
 function connectToServer() {
     var getUrl = window.location;
@@ -11,8 +12,13 @@ function connectToServer() {
         websocket = new WebSocket("wss://"+baseUrl+"/listen-evaluation");
     }
 
+    websocket.onopen = function(event) {
+        keepAlive()
+    }
+
     websocket.onclose = function (event) {
-        alert("closed .......");
+        toggleCloseAlert();
+        cancelKeepAlive()
     };
     websocket.onmessage=function(event) {
         var data = JSON.parse(event.data);
@@ -25,7 +31,6 @@ function connectToServer() {
             if(data.hasOwnProperty('result')){
                 resultArea.innerHTML += data.result + "<br/>";
                 scriptArea.focus();
-
             }
         }
     };
@@ -33,5 +38,24 @@ function connectToServer() {
 
 function sendScriptToServer() {
     resultArea.innerHTML = "";
-    websocket.send(scriptArea.value);
+    var data = JSON.stringify({ script: scriptArea.value})
+    websocket.send(data);
 }
+
+function toggleCloseAlert() {
+    $('#ws-closed').show();
+}
+
+function keepAlive() {
+    var timeout = 20000;
+    if (websocket.readyState == websocket.OPEN) {
+        websocket.send('');
+    }
+    timerId = setTimeout(keepAlive, timeout);
+}
+function cancelKeepAlive() {
+    if (timerId) {
+        clearTimeout(timerId);
+    }
+}
+
