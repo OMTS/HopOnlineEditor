@@ -14,8 +14,7 @@ final class StdOutTests: XCTestCase {
 
     func testStdOutCreation() throws {
         let descriptor = MockWebsocket()
-        let sessionString = "DummySession"
-        let stdout = Stdout(descriptor: descriptor, sessionId: sessionString)
+        let stdout = Stdout(descriptor: descriptor)
         XCTAssertEqual((stdout.descriptor as! MockWebsocket)
             .mockName, "Mocked!")
     }
@@ -23,8 +22,7 @@ final class StdOutTests: XCTestCase {
     func testStdOutHasAMessenger() throws {
         let descriptor = MockWebsocket()
         let messenger = MessengerMocks()
-        let sessionString = "DummySession"
-        let stdout = Stdout(descriptor: descriptor, sessionId: sessionString, messenger: messenger)
+        let stdout = Stdout(descriptor: descriptor, messenger: messenger)
 
         stdout.registerForOutput()
 
@@ -34,8 +32,7 @@ final class StdOutTests: XCTestCase {
     func testStdOutRegistering() throws {
         let descriptor = MockWebsocket()
         let messenger = MessengerMocks()
-        let sessionString = "DummySession"
-        let stdout = Stdout(descriptor: descriptor, sessionId: sessionString, messenger: messenger)
+        let stdout = Stdout(descriptor: descriptor, messenger: messenger)
 
         stdout.registerForOutput()
         messenger.executeHandler(result: "YOLO")

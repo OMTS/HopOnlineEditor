@@ -14,18 +14,16 @@ enum StdoutError: Error {
 
 final class Stdout {
     let descriptor: OuputDesriptor
-    let sessionId: String
     var messenger: MessengerType!
 
-    init(descriptor: OuputDesriptor, sessionId: String, messenger: MessengerType? = nil) {
+    init(descriptor: OuputDesriptor, messenger: MessengerType? = nil) {
         self.descriptor = descriptor
-        self.sessionId = sessionId
-        self.messenger = messenger ?? Messenger(sessionId: sessionId)
+        self.messenger = messenger ?? Messenger()
     }
 
     func registerForOutput() {
         // Configure stdout callback
-        messenger!.subscribe(to: .stdout) { [weak self] (_, message) in
+        messenger!.subscribe(to: .stdout) { [weak self] (message) in
             if let message = message.data as? String {
                 let result = EvaluationResult(result: message)
                 if let jsonString = result.jsonString {

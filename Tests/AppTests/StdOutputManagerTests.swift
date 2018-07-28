@@ -17,7 +17,7 @@ final class StdOutputManagerTests: XCTestCase {
 
     func testStdoutManagerAdd() throws {
         let manager = StdOutputManager()
-        let stdout = Stdout(descriptor: MockWebsocket(), sessionId: "DummySesson")
+        let stdout = Stdout(descriptor: MockWebsocket())
         manager.add(output: stdout, to: "first_key")
 
         XCTAssertEqual(manager.sessions.count, 1)
@@ -27,10 +27,10 @@ final class StdOutputManagerTests: XCTestCase {
 
     func testStdoutManagerRedundantAdd() throws {
         let manager = StdOutputManager()
-        let stdout = Stdout(descriptor: MockWebsocket(), sessionId: "DummySesson")
+        let stdout = Stdout(descriptor: MockWebsocket())
         let newDescriptor = MockWebsocket()
         newDescriptor.mockName = "YO"
-        let stdout2 = Stdout(descriptor: newDescriptor, sessionId: "DummySesson")
+        let stdout2 = Stdout(descriptor: newDescriptor)
 
         manager.add(output: stdout, to: "first_key")
         manager.add(output: stdout2, to: "first_key")
@@ -42,7 +42,7 @@ final class StdOutputManagerTests: XCTestCase {
 
     func testStdoutManagerRemove() throws {
         let manager = StdOutputManager()
-        let stdout = Stdout(descriptor: MockWebsocket(), sessionId: "DummySesson")
+        let stdout = Stdout(descriptor: MockWebsocket())
         manager.add(output: stdout, to: "first_key")
         XCTAssertEqual(manager.sessions.count, 1)
 

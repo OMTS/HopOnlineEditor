@@ -18,6 +18,6 @@ final class MessengerMocks: MessengerType {
 
     func executeHandler(result: String) {
         let messageObj = Message(type: .stdout, identifier: nil, data: result)
-        handler(nil, messageObj)
+        handler(messageObj)
     }
 }

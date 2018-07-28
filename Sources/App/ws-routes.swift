@@ -11,7 +11,7 @@ public func sockets(_ websockets: NIOWebSocketServer) {
             ws.send(jsonString)
         }
 
-        let stdout = Stdout(descriptor: ws, sessionId: uuid)
+        let stdout = Stdout(descriptor: ws)
         sessionManager.add(output:stdout, to: uuid)
         stdout.registerForOutput()
 
@@ -34,10 +34,13 @@ private func treatScript(script: String, on stdout: Stdout) throws {
 
     //maybe we should treat \r\n in the lexer
     let script = OnlineScript(script: filteredScript + "\n")
-    let config = Interpreter.Configuration(messenger: stdout.messenger as? Messenger, isDebug: nil)
-        // Then create intepreter instance with configuration & run script
-        let interpreter = Interpreter(config: config)
-        do {
-            try interpreter.runScript(script.script)
-        }
+
+    let environment = Environment(isDebug: true,
+                                  messenger: stdout.messenger as? Messenger,
+                                  getScriptForModule: nil)
+
+    let interpreter = Interpreter(environment: environment)
+    do {
+        try interpreter.runScript(script.script)
+    }
 }

@@ -42,7 +42,7 @@
         "repositoryURL": "https://github.com/OMTS/Hop.git",
         "state": {
           "branch": "develop",
-          "revision": "ec340dd646eda61e0a48dbf434cfc29a5b39c515",
+          "revision": "891d74bb48302002afdc562a01b6638a076cd054",
           "version": null
         }
       },
@@ -159,8 +159,8 @@
         "repositoryURL": "https://github.com/vapor/vapor.git",
         "state": {
           "branch": null,
-          "revision": "e8bc824a45c6c6ab15664ff41d79a1371ddc5cd3",
-          "version": "3.0.7"
+          "revision": "54632a6c1e7ecd9923c0d00b612de936de1c4745",
+          "version": "3.0.8"
         }
       },
       {
