@@ -1,5 +1,4 @@
 //source: https://jsfiddle.net/2wAzx/13/
-
 var scriptArea = document.getElementById('script');
 var myCodeMirror = CodeMirror.fromTextArea(scriptArea, {
                                            lineNumbers: true,
@@ -78,8 +77,17 @@ Sys.print(her.getDescription())
 }
 
 function copyToClipboard() {
-    scriptArea.select();
-    const selection = window.getSelection();
-    document.execCommand("copy");
-    selection.removeAllRanges();
+    new ClipboardJS('.btn-clipboard',
+                    { text: function(trigger) {
+                                $("#cpy-to-clip").tooltip('show');
+                                    setTimeout(function() {
+                                            $("#cpy-to-clip").tooltip('hide');
+                                            }, 2000);
+                                return myCodeMirror.getValue();
+                        }
+                    });
+
+    //const selection = window.getSelection();
+    //document.execCommand("copy");
+    //selection.removeAllRanges();
 }

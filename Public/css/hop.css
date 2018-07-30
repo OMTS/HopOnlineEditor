@@ -1,1 +1,4 @@
 .cm-s-dracula .CodeMirror-cursor { border-left: solid thin rgba(255, 193, 7, 1) !important; }
+#ws-closed {
+    display: none;
+}

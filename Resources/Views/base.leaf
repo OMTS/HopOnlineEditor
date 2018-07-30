@@ -12,11 +12,9 @@
         <link rel="stylesheet" href="/css/hop.css">
 
         <title>#(title)</title>
-        <style>
-            #ws-closed {
-                display: none;
-            }
-        </style>
+
+
+
     </head>
     <body onload="connectToServer()" class="bg-secondary">
         <nav class="navbar navbar-expand-md navbar-dark bg-warning">
@@ -35,8 +33,10 @@
                     </li>
                 </ul>
             </div>
-        </nav>
+           <!-- <span id="version" class="navbar-text text-dark"></span> -->
 
+            <a href="https://github.com/OMTS/Hop" id="version" class="navbar-text text-dark"></a>
+        </nav>
         <div id="ws-closed" class="alert alert-danger alert-dismissible p-3 mb-5 ml-4 mr-4 mt-5 rounded fade show" role="alert">
             Websocket closed
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -73,6 +73,8 @@
         <script src="/scripts/cm/addon/edit/closebrackets.js"></script>
         <script src="/scripts/cm/addon/edit/matchbrackets.js"></script>
         <script src="https://cdn.jsdelivr.net/remarkable/1.7.1/remarkable.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+        <script src="/scripts/init.js"></script>
         <script src="/scripts/websocketclient.js"></script>
         <script src="/scripts/tabtextarea.js"></script>
         <script src="/scripts/help.js"></script>
