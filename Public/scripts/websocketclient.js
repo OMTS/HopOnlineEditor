@@ -38,7 +38,8 @@ function connectToServer() {
 
 function sendScriptToServer() {
     resultArea.innerHTML = "";
-    var data = JSON.stringify({ script: scriptArea.value})
+    var script = myCodeMirror.getValue();
+    var data = JSON.stringify({ script: script });
     websocket.send(data);
 }
 
