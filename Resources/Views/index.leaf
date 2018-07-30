@@ -24,6 +24,19 @@
                     </div>
                 </div>
             </div>
+            <div class="col col-md-auto">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-outline-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Code Snippets
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#" onclick="snippetFactorial()">Factorial</a>
+                        <a class="dropdown-item" href="#" onclick="snippetForLoop()">For loop</a>
+                        <a class="dropdown-item" href="#" onclick="snippetWhileLoop()">While loop</a>
+                        <a class="dropdown-item" href="#" onclick="snippetClasses()">Classes and Heritage</a>
+                    </div>
+                </div>
+            </div>
 
             <div class="col text-right">
                 <button class="btn btn-warning" onclick="sendScriptToServer()">Run 🚀</button>
