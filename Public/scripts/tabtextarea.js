@@ -32,7 +32,7 @@ function snippetForLoop(){
 
 function snippetWhileLoop() {
     myCodeMirror.getValue();
-    const whileScript = "var count = 0\nwhile count < 5 {\n\tcount = count - 1\n// Loop five times\n}\n"
+    const whileScript = "var count = 0\nwhile count < 5 {\n\tcount = count + 1\n// Loop five times\n}\n"
     myCodeMirror.setValue(myCodeMirror.getValue() + whileScript);
 }
 function snippetClasses(){
