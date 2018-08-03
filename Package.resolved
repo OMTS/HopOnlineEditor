@@ -42,7 +42,7 @@
         "repositoryURL": "https://github.com/OMTS/Hop.git",
         "state": {
           "branch": "develop",
-          "revision": "2dc06b85c186d7d9ea26d0ec14867309bdff7dcb",
+          "revision": "16351725f51755e33fa58a3ba2a267b2911a6a97",
           "version": null
         }
       },
@@ -96,8 +96,8 @@
         "repositoryURL": "https://github.com/apple/swift-nio.git",
         "state": {
           "branch": null,
-          "revision": "695afc5205aaa49fca092b94b479ff71c43d9d3c",
-          "version": "1.8.0"
+          "revision": "c6acf77fc9a310c0ebf8d5f73f285d1639801d2f",
+          "version": "1.9.0"
         }
       },
       {
