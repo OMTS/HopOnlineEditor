@@ -31,6 +31,10 @@ function connectToServer() {
             if(data.hasOwnProperty('result')){
                 resultArea.innerHTML += data.result + "<br/>";
                 scriptArea.focus();
+            } else if (data.hasOwnProperty('error')){
+                var error = data.error
+                resultArea.innerHTML = error.reason + " at line " + error.lineNumber + ", on char: " + error.position + "<br/>";
+                scriptArea.focus();
             }
         }
     };
