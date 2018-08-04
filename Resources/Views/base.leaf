@@ -69,11 +69,13 @@
         <script src="/scripts/cm/addon/display/placeholder.js"></script>
         <script src="/scripts/cm/addon/edit/closebrackets.js"></script>
         <script src="/scripts/cm/addon/edit/matchbrackets.js"></script>
+        <script src="/scripts/cm/addon/selection/active-line.js"></script>
+
         <script src="https://cdn.jsdelivr.net/remarkable/1.7.1/remarkable.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
         <script src="/scripts/init.js"></script>
-        <script src="/scripts/websocketclient.js"></script>
         <script src="/scripts/tabtextarea.js"></script>
+        <script src="/scripts/websocketclient.js"></script>
         <script src="/scripts/help.js"></script>
 
     </body>
