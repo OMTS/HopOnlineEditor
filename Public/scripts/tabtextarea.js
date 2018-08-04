@@ -3,9 +3,13 @@ var scriptArea = document.getElementById('script');
 var myCodeMirror = CodeMirror.fromTextArea(scriptArea, {
                                            lineNumbers: true,
                                            theme: "dracula",
-                                           mode: "swift",
+                                           mode: "hop",
                                            matchBrackets: true,
-                                           autoCloseBrackets: true
+                                           autoCloseBrackets: true,
+                                           extraKeys: {"Ctrl-R": function(cm){ sendScriptToServer(); }},
+                                           lineWrapping: true,
+                                           foldGutter: true,
+                                           gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
                                            });
 
 function importSys() {

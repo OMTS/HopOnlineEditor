@@ -5,3 +5,12 @@
 #ws-closed {
     display: none;
 } 
+
+.CodeMirror-linenumber {
+    padding: 0 5px 0 5px;
+    min-width: 25px;
+}
+
+.CodeMirror-gutters {
+    padding: 0 5px 0 0px;
+}

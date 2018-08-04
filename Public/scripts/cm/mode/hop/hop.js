@@ -166,7 +166,7 @@
     }
   }
 
-  CodeMirror.defineMode("swift", function(config) {
+  CodeMirror.defineMode("hop", function(config) {
     return {
       startState: function() {
         return {
@@ -211,5 +211,5 @@
     }
   })
 
-  CodeMirror.defineMIME("text/x-swift","swift")
+  CodeMirror.defineMIME("text/x-hop","hop")
 });

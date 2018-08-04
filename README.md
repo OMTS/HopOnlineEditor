@@ -15,9 +15,12 @@
 * Handle All evaluation results (websockets?) ✅
 * Syntaxe higlighting (see CodeMirror) ✅
 * Handle Errors ✅
-* Get Language version dynamically
-* Write websocket tests
-* Help is currently a static file. Plug it to the actual help from Hop repo ✅
-* Manage env variable to get help from either Hop's master or develop branch
 * Implement a stdout print mechanism to avoid NSNotification in Hop ✅
 * Create a framework for the Language dependency ✅
+* Help is currently a static file. Plug it to the actual help from Hop repo ✅
+* Write websocket tests
+* Add autocompletion for basic Hop keywords
+* Manage env variable to get help from either Hop's master or develop branch
+* Add a download script feature
+* Add an upload script feature
+* Get Language version dynamically

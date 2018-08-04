@@ -63,9 +63,7 @@ function connectToServer() {
 }
 
 function sendScriptToServer() {
-
     clearError();
-
     resultArea.innerHTML = "";
     var script = myCodeMirror.getValue();
     var data = JSON.stringify({ script: script });

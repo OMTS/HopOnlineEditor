@@ -2,7 +2,7 @@
 // Distributed under an MIT license: http://codemirror.net/LICENSE
 
 (function() {
-  var mode = CodeMirror.getMode({indentUnit: 2}, "swift");
+  var mode = CodeMirror.getMode({indentUnit: 2}, "hop");
   function MT(name) { test.mode(name, mode, Array.prototype.slice.call(arguments, 1)); }
 
   // Ensure all number types are properly represented.
@@ -20,16 +20,10 @@
   // Variable/class/etc definition.
   MT("definition",
      "[keyword var] [def a] [operator =] [number 5]",
-     "[keyword let] [def b][punctuation :] [variable-2 Int] [operator =] [number 10]",
+     "[keyword cont] [def b][punctuation :] [variable-2 Int] [operator =] [number 10]",
      "[keyword class] [def C] [punctuation {] [punctuation }]",
-     "[keyword struct] [def D] [punctuation {] [punctuation }]",
-     "[keyword enum] [def E] [punctuation {] [punctuation }]",
-     "[keyword extension] [def F] [punctuation {] [punctuation }]",
-     "[keyword protocol] [def G] [punctuation {] [punctuation }]",
      "[keyword func] [def h][punctuation ()] [punctuation {] [punctuation }]",
      "[keyword import] [def Foundation]",
-     "[keyword typealias] [def NewString] [operator =] [variable-2 String]",
-     "[keyword associatedtype] [def I]",
      "[keyword for] [def j] [keyword in] [number 0][punctuation ..][operator <][number 3] [punctuation {] [punctuation }]");
 
   // Strings and string interpolation.
