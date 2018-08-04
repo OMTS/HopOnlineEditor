@@ -1,8 +1,9 @@
+//Activiating document's tooltips
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
   })
 
-
+//Getting Hop version number
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.open("GET", "/api/version", false);
 xmlhttp.send();

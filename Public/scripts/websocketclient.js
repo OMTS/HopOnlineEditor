@@ -1,7 +1,26 @@
 var websocket;
+var errorLineHandler;
+var errorChar;
 var scriptArea = document.getElementById('script');
 var resultArea = document.getElementById('results-area');
 var timerID = 0;
+var ERROR_LINE_BACKGROUND = "Hop-error-line";
+var ERROR_CHAR_BACKGROUND = "Hop-error-char";
+
+myCodeMirror.on("change", function(){
+    clearError();
+});
+
+function clearError() {
+    resultArea.classList.remove("border-danger");
+
+    if (errorLineHandler) {
+        myCodeMirror.removeLineClass(errorLineHandler,"background", ERROR_LINE_BACKGROUND);
+    }
+    if (errorChar) {
+        errorChar.clear();
+    }
+}
 
 function connectToServer() {
     var getUrl = window.location;
@@ -34,6 +53,9 @@ function connectToServer() {
             } else if (data.hasOwnProperty('error')){
                 var error = data.error
                 resultArea.innerHTML = error.reason + " at line " + error.lineNumber + ", on char: " + error.position + "<br/>";
+                resultArea.classList.add("border-danger");
+                errorLineHandler = myCodeMirror.addLineClass(error.lineNumber - 1, "background", ERROR_LINE_BACKGROUND);
+                highlightParam(error.position);
                 scriptArea.focus();
             }
         }
@@ -41,6 +63,9 @@ function connectToServer() {
 }
 
 function sendScriptToServer() {
+
+    clearError();
+
     resultArea.innerHTML = "";
     var script = myCodeMirror.getValue();
     var data = JSON.stringify({ script: script });
@@ -64,3 +89,23 @@ function cancelKeepAlive() {
     }
 }
 
+function highlightParam(pos){
+
+    var ttl = 0;
+    var line = 0;
+
+    $('.CodeMirror-line').each(function() {
+      var s = (ttl === 0) ? ttl : ttl + 1;
+      var l = ($(this).text().length === 1) ? $(this).text().length : $(this).text().length + 1;
+        //alert($(this).text() + $(this).text().length);
+      ttl += l;
+      //alert(l);
+
+      if (pos >= s && pos <= ttl) {
+        var diff = ttl - l;
+        var posAdjA = pos - diff;
+        errorChar = myCodeMirror.markText({line: line, ch: posAdjA}, {line: line, ch: posAdjA + 1}, {className: ERROR_CHAR_BACKGROUND});
+      }
+      line++;
+    });
+}
