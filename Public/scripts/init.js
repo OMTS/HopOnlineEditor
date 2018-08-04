@@ -4,17 +4,24 @@ $(function () {
   })
 
 //Getting Hop version number
-var xmlhttp = new XMLHttpRequest();
-xmlhttp.open("GET", "/api/version", false);
-xmlhttp.send();
+var client = new XMLHttpRequest();
+client.onload = reponseHandler;
+client.open("GET", "/api/version");
+client.send();
 
-if (xmlhttp.status==200) {
-    var data = JSON.parse(xmlhttp.responseText);
+function reponseHandler() {
+    if (this.status==200) {
+        var data = JSON.parse(this.responseText);
 
-    if(data.hasOwnProperty('version')){
-        $("#version").text("Hop " + data.version);
+        if(data.hasOwnProperty('version')){
+            $("#version").text("Hop " + data.version);
+        }
     }
 }
+
+
+
+
 
 
 

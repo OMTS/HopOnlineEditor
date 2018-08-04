@@ -55,7 +55,7 @@ function connectToServer() {
                 resultArea.innerHTML = error.reason + " at line " + error.lineNumber + ", on char: " + error.position + "<br/>";
                 resultArea.classList.add("border-danger");
                 errorLineHandler = myCodeMirror.addLineClass(error.lineNumber - 1, "background", ERROR_LINE_BACKGROUND);
-                highlightParam(error.position);
+                highlightChar(error.position);
                 scriptArea.focus();
             }
         }
@@ -89,23 +89,22 @@ function cancelKeepAlive() {
     }
 }
 
-function highlightParam(pos){
+function highlightChar(position){
 
-    var ttl = 0;
-    var line = 0;
-
-    $('.CodeMirror-line').each(function() {
-      var s = (ttl === 0) ? ttl : ttl + 1;
-      var l = ($(this).text().length === 1) ? $(this).text().length : $(this).text().length + 1;
-        //alert($(this).text() + $(this).text().length);
-      ttl += l;
-      //alert(l);
-
-      if (pos >= s && pos <= ttl) {
-        var diff = ttl - l;
-        var posAdjA = pos - diff;
-        errorChar = myCodeMirror.markText({line: line, ch: posAdjA}, {line: line, ch: posAdjA + 1}, {className: ERROR_CHAR_BACKGROUND});
-      }
-      line++;
-    });
+    var script = myCodeMirror.getValue();
+    var scriptPerLine = script.split("\n");
+    var posToFind = position;
+    for (var i = 0; i < scriptPerLine.length; i++) {
+        var lineLength = scriptPerLine[i].length;
+        if (posToFind >= lineLength) {
+            posToFind -= lineLength +1;
+        } else {
+            if (posToFind < 0) {
+                errorChar = myCodeMirror.markText({line: i, ch: 0}, {line: i, ch: 1}, {className: ERROR_CHAR_BACKGROUND});
+            } else {
+                errorChar = myCodeMirror.markText({line: i, ch: posToFind}, {line: i, ch: posToFind + 1}, {className: ERROR_CHAR_BACKGROUND});
+            }
+            break;
+        }
+    }
 }
