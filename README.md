@@ -14,7 +14,7 @@
 * Improve Styling ✅
 * Handle All evaluation results (websockets?) ✅
 * Syntaxe higlighting (see CodeMirror) ✅
-* Handle Errors
+* Handle Errors ✅
 * Get Language version dynamically
 * Write websocket tests
 * Help is currently a static file. Plug it to the actual help from Hop repo ✅
