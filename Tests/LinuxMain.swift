@@ -7,5 +7,6 @@ XCTMain([
     testCase(SessionTests.allTests),
     testCase(OnlineScriptTests.allTests),
     testCase(StdOutTests.allTests),
-    testCase(EditorTests.allTests)
+    testCase(EditorTests.allTests),
+    testCase(HopControllerTests.allTests)
     ])
