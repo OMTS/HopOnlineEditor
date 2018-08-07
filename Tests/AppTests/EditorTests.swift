@@ -18,7 +18,7 @@ final class EditorTests: XCTestCase {
 
     func testLanguageVersion() throws {
         let receivedVersion = try app.getResponse(
-            to: "/api/version",
+            to: "/api/hop/version",
             method: .GET,
             headers: ["Content-Type": "application/json"],
             decodeTo: LanguageVersion.self)

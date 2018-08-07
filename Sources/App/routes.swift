@@ -9,4 +9,7 @@ public func routes(_ router: Router) throws {
 
     let editorController = EditorController()
     try router.register(collection: editorController)
+
+    let hopController = HopController()
+    try router.register(collection: hopController)
 }
