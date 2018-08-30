@@ -1,0 +1,16 @@
+.cm-s-dracula .CodeMirror-cursor { border-left: solid thin rgba(255, 193, 7, 1) !important; }
+.Hop-error-line {background: rgba(96, 45, 43, 0.8);}
+.Hop-error-char {text-decoration: underline; text-decoration-color: rgb(210, 50, 39); }
+
+#ws-closed {
+    display: none;
+} 
+
+.CodeMirror-linenumber {
+    padding: 0 5px 0 5px;
+    min-width: 25px;
+}
+
+.CodeMirror-gutters {
+    padding: 0 5px 0 0px;
+}

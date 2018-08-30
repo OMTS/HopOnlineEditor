@@ -10,10 +10,10 @@
             <div class="col col-md-auto">
                 <button class="btn btn-outline-light" data-toggle="modal" data-target=".help-modal-lg" onclick="loadHelp()">Help</button>
             </div>
-            <div class="col col-md-auto">
-                <button class="btn btn-outline-light" onclick="copyToClipboard()">Copy to Clipboard</button>
+           <div class="col col-md-auto pl-0">
+                <button class="btn btn-outline-light btn-clipboard" id="cpy-to-clip" onclick="copyToClipboard()" data-toggle="tooltip" data-placement="top" data-trigger="manual" title="Copied!">Clipboard</button>
             </div>
-            <div class="col col-md-auto">
+            <div class="col col-md-auto pl-0">
                 <div class="btn-group">
                     <button type="button" class="btn btn-outline-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Native Modules
@@ -24,6 +24,20 @@
                     </div>
                 </div>
             </div>
+            <div class="col col-md-auto pl-0">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-outline-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Code Snippets
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#" onclick="snippetFactorial()">Factorial</a>
+                        <a class="dropdown-item" href="#" onclick="snippetForLoop()">For loop</a>
+                        <a class="dropdown-item" href="#" onclick="snippetWhileLoop()">While loop</a>
+                        <a class="dropdown-item" href="#" onclick="snippetClasses()">Classes and Heritage</a>
+                    </div>
+                </div>
+            </div>
+            
 
             <div class="col text-right">
                 <button class="btn btn-warning" onclick="sendScriptToServer()">Run 🚀</button>

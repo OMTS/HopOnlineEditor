@@ -22,7 +22,7 @@ final class EditorTests: XCTestCase {
             method: .GET,
             headers: ["Content-Type": "application/json"],
             decodeTo: LanguageVersion.self)
-        XCTAssertEqual(receivedVersion.version, "0.0.1")
+        XCTAssertEqual(receivedVersion.version, "0.1.4")
     }
 
     static let allTests = [("testLanguageVersion", testLanguageVersion)]

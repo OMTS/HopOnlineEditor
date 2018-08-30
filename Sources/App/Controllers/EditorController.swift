@@ -22,6 +22,6 @@ final class EditorController: RouteCollection {
 
     private func versionHandler(_ req: Request) throws -> LanguageVersion {
         //Need a way to get the language version from Hop Dependency
-        return LanguageVersion(version: "0.0.1")
+        return LanguageVersion(version: "0.1.4")
     }
 }
